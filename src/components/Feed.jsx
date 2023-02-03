@@ -54,5 +54,3 @@ const Feed = () => {
 };
 
 export default Feed;
-
-//https://youtu.be/dyFVwXROzZk?t=2847
