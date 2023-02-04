@@ -1,7 +1,7 @@
 import { Stack } from "@mui/material";
 import { Link } from "react-router-dom";
 
-// import { logo } from "../utils/constants";
+
 import SearchBar from "./SearchBar";
 import logo from "../utils/logo.png";
 
@@ -11,7 +11,7 @@ const Navbar = () => (
     alignItems="center"
     p={2}
     sx={{
-      postion: "sticky",
+      position: "sticky",
       top: "0",
       justifyContent: "space-between",
       background: "#000",
