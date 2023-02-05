@@ -7,7 +7,7 @@ const Videos = ({ videos, direction, justifyContentForFeed }) => {
   if (!videos?.length)
     return (
       <Typography color="#fff" variant="h4" fontWeight="bold">
-        Not Found...
+        Loading..
       </Typography>
     );
 
