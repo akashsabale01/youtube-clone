@@ -19,11 +19,11 @@ const App = () => (
         <Route path="/video/:id" element={<VideoDetail />} />
         <Route path="/channel/:id" element={<ChannelDetail />} />
         <Route path="/search/:searchTerm" element={<SearchFeed />} />
+        <Routes>
+          <Route path="*" element={<ErrorPage />} />
+        </Routes>
       </Routes>
     </Box>
-    <Routes>
-      <Route path="*" element={<ErrorPage />} />
-    </Routes>
   </BrowserRouter>
 );
 
