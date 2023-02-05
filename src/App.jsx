@@ -7,6 +7,7 @@ import {
   VideoDetail,
   ChannelDetail,
   SearchFeed,
+  ErrorPage,
 } from "./components";
 
 const App = () => (
@@ -20,6 +21,9 @@ const App = () => (
         <Route path="/search/:searchTerm" element={<SearchFeed />} />
       </Routes>
     </Box>
+    <Routes>
+      <Route path="*" element={<ErrorPage />} />
+    </Routes>
   </BrowserRouter>
 );
 
