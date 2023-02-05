@@ -14,17 +14,34 @@ const VideoDetail = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    fetchFromAPI(`videos?part=snippet,statistics&id=${id}`).then((data) =>
-      setVideoDetail(data.items[0])
-    );
+    fetchFromAPI(`videos?part=snippet,statistics&id=${id}`)
+      .then((data) => {
+        if (data?.error) {
+          console.error(data.error);
+          return;
+        }
+        setVideoDetail(data.items[0]);
+      })
+      .catch((error) => console.error(error));
 
-    fetchFromAPI(`search?part=snippet&relatedToVideoId=${id}&type=video`).then(
-      (data) => setVideos(data.items)
-    );
+    fetchFromAPI(`search?part=snippet&relatedToVideoId=${id}&type=video`)
+      .then((data) => {
+        if (data?.error) {
+          console.error(data.error);
+          return;
+        }
+        setVideos(data.items);
+      })
+      .catch((error) => console.error(error));
   }, [id]);
 
   // if (!videoDetail?.snippet) return "Loading...";
-  if (!videos?.length) return "Loading...";
+  if (!videos?.length)
+    return (
+      <Typography color="#fff" variant="h4" fontWeight="bold">
+        Not Found...
+      </Typography>
+    );
 
   const {
     snippet: { title, channelId, channelTitle },

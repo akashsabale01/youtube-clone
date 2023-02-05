@@ -9,36 +9,43 @@ const Feed = () => {
   const [videos, setVideos] = useState([]);
 
   useEffect(() => {
-    fetchFromAPI(`search?part=snippet&q=${selectedCategory}`).then((data) =>
-      setVideos(data.items)
-    );
+    fetchFromAPI(`search?part=snippet&q=${selectedCategory}`)
+      .then((data) => {
+        if (data?.error) {
+          console.error(data.error);
+          return;
+        }
+        setVideos(data.items);
+      })
+      .catch((error) => console.error(error));
   }, [selectedCategory]);
 
   return (
     <Stack sx={{ flexDirection: { xs: "column", md: "row" } }}>
       <Box
         sx={{
-          height: { xs: "auto", md: "94vh" },
+          height: { xs: "auto", md: "calc(100vh - 78px)" },
           borderRight: "1px solid #3d3d3d",
           px: { xs: 0, md: 2 },
           overflow: "auto",
+          position: "sticky",
+          top: "78px",
         }}
       >
         <Sidebar
           selectedCategory={selectedCategory}
           setSelectedCategory={setSelectedCategory}
         />
-
-        <Typography
-          className="copyright"
-          variant="body2"
-          sx={{ mt: 1.5, color: "#fff" }}
-        >
-          Copyright @2023 Youtube
-        </Typography>
       </Box>
 
-      <Box p={2} sx={{ overflowY: "auto", height: "90vh", flex: 2 }}>
+      <Box
+        p={2}
+        sx={{
+          overflowY: "auto",
+          height: { xs: "auto", md: "calc(100vh - 110px)" },
+          flex: 2,
+        }}
+      >
         <Typography
           variant="h4"
           fontWeight="bold"
@@ -47,7 +54,15 @@ const Feed = () => {
         >
           {selectedCategory} <span style={{ color: "#F31503" }}>Videos</span>
         </Typography>
-        <Videos videos={videos} />
+        <Videos
+          videos={videos}
+          justifyContentForFeed={{
+            xs: "center",
+            sm: "center",
+            md: "start",
+            lg: "start",
+          }}
+        />
       </Box>
     </Stack>
   );

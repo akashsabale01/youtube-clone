@@ -1,4 +1,4 @@
-import { Stack } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 import { categories } from "../utils/constants";
 
 const Sidebar = ({ selectedCategory, setSelectedCategory }) => {
@@ -6,8 +6,6 @@ const Sidebar = ({ selectedCategory, setSelectedCategory }) => {
     <Stack
       direction="row"
       sx={{
-        overflow: "auto",
-        height: { xs: "auto", md: "550px" },
         flexDirection: { md: "column" },
       }}
     >
@@ -38,6 +36,14 @@ const Sidebar = ({ selectedCategory, setSelectedCategory }) => {
           </span>
         </button>
       ))}
+
+      <Typography
+        className="copyright"
+        variant="body2"
+        sx={{ mt: 1.5, color: "#fff" }}
+      >
+        Copyright @2023 Youtube
+      </Typography>
     </Stack>
   );
 };

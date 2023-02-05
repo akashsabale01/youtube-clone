@@ -9,9 +9,15 @@ const SearchFeed = () => {
   const { searchTerm } = useParams();
 
   useEffect(() => {
-    fetchFromAPI(`search?part=snippet&q=${searchTerm}`).then((data) =>
-      setVideos(data.items)
-    );
+    fetchFromAPI(`search?part=snippet&q=${searchTerm}`)
+      .then((data) => {
+        if (data?.error) {
+          console.error(data.error);
+          return;
+        }
+        setVideos(data.items);
+      })
+      .catch((error) => console.error(error));
   }, [searchTerm]);
 
   return (
