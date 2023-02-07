@@ -30,6 +30,8 @@ const Feed = () => {
           overflow: "auto",
           position: "sticky",
           top: "78px",
+          backgroundColor: "#000",
+          zIndex: 2,
         }}
       >
         <Sidebar

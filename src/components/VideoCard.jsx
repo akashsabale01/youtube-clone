@@ -24,7 +24,12 @@ const VideoCard = ({
         borderRadius: 0,
         transition: "all 0.3s ease-in-out",
         ":hover": {
-          transform: "scale(1.05)",
+          transform: {
+            xs: "scale(1)",
+            sm: "scale(1)",
+            md: "scale(1.05)",
+            lg: "scale(1.05)",
+          },
         },
       }}
     >
