@@ -6,11 +6,13 @@ import Chip from "@mui/material/Chip";
 import { CheckCircle } from "@mui/icons-material";
 import ThumbUpAltOutlinedIcon from "@mui/icons-material/ThumbUpAltOutlined";
 import { Videos } from "./";
+import { MagnifyingGlass } from "react-loader-spinner";
 import { fetchFromAPI } from "../utils/fetchFromAPI";
 
 const VideoDetail = () => {
   const [videoDetail, setVideoDetail] = useState(null);
   const [videos, setVideos] = useState(null);
+
   const { id } = useParams();
 
   useEffect(() => {
@@ -38,9 +40,25 @@ const VideoDetail = () => {
   // if (!videoDetail?.snippet) return "Loading...";
   if (!videos?.length)
     return (
-      <Typography color="#fff" variant="h4" fontWeight="bold">
-        Loading...
-      </Typography>
+      <Stack
+        direction="column"
+        sx={{
+          height: "calc(100vh - 78px)",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <MagnifyingGlass
+          visible={true}
+          height="150"
+          width="150"
+          ariaLabel="MagnifyingGlass-loading"
+          wrapperStyle={{}}
+          wrapperClass="MagnifyingGlass-wrapper"
+          glassColor="#c0efff"
+          color="#FC1503"
+        />
+      </Stack>
     );
 
   const {
@@ -90,13 +108,13 @@ const VideoDetail = () => {
                   {parseInt(viewCount).toLocaleString()} Views
                 </Typography>
                 {/* <Stack direction="row" alignItems="center">
-                  <Typography variant="body1" sx={{ opacity: "0.7" }}>
-                    <ThumbUpRoundedIcon
-                      sx={{ fontSize: "15px", color: "white", ml: "5px" }}
-                    />{" "}
-                    {parseInt(likeCount).toLocaleString()} Likes
-                  </Typography>
-                </Stack> */}
+                    <Typography variant="body1" sx={{ opacity: "0.7" }}>
+                      <ThumbUpRoundedIcon
+                        sx={{ fontSize: "15px", color: "white", ml: "5px" }}
+                      />{" "}
+                      {parseInt(likeCount).toLocaleString()} Likes
+                    </Typography>
+                  </Stack> */}
                 <Chip
                   variant="outline"
                   icon={<ThumbUpAltOutlinedIcon color="#fff" />}

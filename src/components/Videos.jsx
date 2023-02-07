@@ -1,13 +1,29 @@
-import { Box, Stack, Typography } from "@mui/material";
-
+import { Box, Stack } from "@mui/material";
+import { MagnifyingGlass } from "react-loader-spinner";
 import { VideoCard, ChannelCard } from "./";
 
 const Videos = ({ videos, direction, justifyContentForFeed }) => {
   if (!videos?.length)
     return (
-      <Typography color="#fff" variant="h4" fontWeight="bold">
-        Loading..
-      </Typography>
+      <Stack
+        direction="column"
+        sx={{
+          height: "calc(100vh - 78px)",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <MagnifyingGlass
+          visible={true}
+          height="150"
+          width="150"
+          ariaLabel="MagnifyingGlass-loading"
+          wrapperStyle={{}}
+          wrapperClass="MagnifyingGlass-wrapper"
+          glassColor="#c0efff"
+          color="#FC1503"
+        />
+      </Stack>
     );
 
   return (
@@ -29,7 +45,6 @@ const Videos = ({ videos, direction, justifyContentForFeed }) => {
           {item.id.videoId && <VideoCard video={item} />}
 
           {item.id.channelId && <ChannelCard channelDetail={item} />}
-
         </Box>
       ))}
     </Stack>

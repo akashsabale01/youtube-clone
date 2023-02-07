@@ -21,7 +21,8 @@ const VideoCard = ({
       sx={{
         width: { xs: "345px", sm: "263px", md: "264px" },
         boxShadow: "none",
-        borderRadius: 0,
+        border: "1px solid darkgray",
+        borderRadius: "15px",
         transition: "all 0.3s ease-in-out",
         ":hover": {
           transform: {
