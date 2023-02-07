@@ -36,11 +36,10 @@ const Sidebar = ({ selectedCategory, setSelectedCategory }) => {
           </span>
         </button>
       ))}
-
       <Typography
         className="copyright"
         variant="body2"
-        sx={{ mt: 1.5, color: "#fff" }}
+        sx={{ mt: 1.5, color: "lightgray" }}
       >
         Copyright @2023 Youtube
       </Typography>
